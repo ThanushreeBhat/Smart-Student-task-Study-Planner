@@ -9,7 +9,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-mongoose.connect("mongodb://127.0.0.1:27017/smartplanner");
+mongoose.connect("mongodb+srv://thanubhats60_db_user:<MPLfDjZbL9Uy3bJ3>@cluster0.rafb4kt.mongodb.net/");
 
 app.use("/", authRoutes);
 app.use("/", taskRoutes);
