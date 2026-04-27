@@ -1,17 +1,13 @@
-// routes/task.js
 import express from "express";
-import Task from "../models/Task.js";
+import { createTask, getTasks, updateTask, deleteTask, getStats } from "../controllers/taskController.js";
+import { protect } from "../middleware/authMiddleware.js";
 
 const router = express.Router();
 
-router.post("/tasks", async (req, res) => {
-  const task = await Task.create(req.body);
-  res.json(task);
-});
-
-router.get("/tasks", async (req, res) => {
-  const tasks = await Task.find();
-  res.json(tasks);
-});
+router.post("/tasks", protect, createTask);
+router.get("/tasks", protect, getTasks);
+router.put("/tasks/:id", protect, updateTask);
+router.delete("/tasks/:id", protect, deleteTask);
+router.get("/stats", protect, getStats);
 
 export default router;
