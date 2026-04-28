@@ -1,7 +1,3 @@
 export default function Navbar() {
-  return (
-    <div>
-      <h2>Smart Planner</h2>
-    </div>
-  );
+  return <div className="navbar">🎓 Study Planner</div>;
 }
