@@ -1,19 +1,20 @@
 import { useState } from "react";
-import axios from "axios";
+import API from "../services/api";
 
 export default function Login() {
-  const [email, setEmail] = useState("");
+  const [form, setForm] = useState({});
 
-  const handleLogin = async () => {
-    const res = await axios.post("http://localhost:5000/login", { email });
-    console.log(res.data);
+  const login = async () => {
+    const res = await API.post("/login", form);
+    localStorage.setItem("token", res.data.token);
+    window.location.href = "/dashboard";
   };
 
   return (
     <div>
-      <h2>Login</h2>
-      <input onChange={(e) => setEmail(e.target.value)} />
-      <button onClick={handleLogin}>Login</button>
+      <input placeholder="Email" onChange={e => setForm({...form, email: e.target.value})}/>
+      <input placeholder="Password" onChange={e => setForm({...form, password: e.target.value})}/>
+      <button onClick={login}>Login</button>
     </div>
   );
 }
