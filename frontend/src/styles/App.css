@@ -4,14 +4,12 @@ body {
   background: linear-gradient(to right, #eef2ff, #f8fafc);
 }
 
-/* Container */
 .container {
   max-width: 900px;
   margin: auto;
   padding: 20px;
 }
 
-/* Navbar */
 .navbar {
   background: #4f46e5;
   color: white;
@@ -21,55 +19,47 @@ body {
   font-weight: bold;
 }
 
-/* Card */
 .card {
   background: white;
   padding: 15px;
   margin: 12px 0;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-  transition: 0.2s;
-}
-.card:hover {
-  transform: scale(1.02);
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
 }
 
-/* Priority */
-.high { border-left: 6px solid #ef4444; }
-.medium { border-left: 6px solid #f59e0b; }
-.low { border-left: 6px solid #10b981; }
+.high { border-left: 6px solid red; }
+.medium { border-left: 6px solid orange; }
+.low { border-left: 6px solid green; }
 
-/* Buttons */
 button {
-  padding: 8px 14px;
+  padding: 8px 12px;
   margin: 5px;
-  border-radius: 6px;
   border: none;
+  border-radius: 6px;
   cursor: pointer;
 }
-.btn-primary { background: #4f46e5; color: white; }
-.btn-danger { background: #ef4444; color: white; }
-.btn-success { background: #10b981; color: white; }
 
-/* Inputs */
+.btn-primary { background: #4f46e5; color: white; }
+.btn-success { background: green; color: white; }
+.btn-danger { background: red; color: white; }
+
 input, select {
+  width: 100%;
   padding: 10px;
   margin: 8px 0;
-  width: 100%;
   border-radius: 6px;
   border: 1px solid #ccc;
 }
 
-/* Stats */
 .stats {
   display: flex;
   gap: 10px;
 }
+
 .stat-box {
   flex: 1;
   background: white;
-  padding: 15px;
-  border-radius: 10px;
+  padding: 12px;
   text-align: center;
-  font-weight: bold;
+  border-radius: 8px;
 }

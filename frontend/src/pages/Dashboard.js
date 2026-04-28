@@ -1,27 +1,36 @@
 import { useEffect, useState } from "react";
 import API from "../services/api";
-import TaskCard from "../components/TaskCard";
+import TaskForm from "../components/TaskForm";
+import TaskList from "../components/TaskList";
 
 export default function Dashboard() {
   const [tasks, setTasks] = useState([]);
   const [stats, setStats] = useState({});
 
   useEffect(() => {
-    API.get("/tasks").then(res => setTasks(res.data));
-    API.get("/stats").then(res => setStats(res.data));
+    load();
   }, []);
 
+  const load = async () => {
+    const t = await API.get("/tasks");
+    const s = await API.get("/stats");
+
+    setTasks(t.data);
+    setStats(s.data);
+  };
+
   return (
-    <div>
-      <h2>Dashboard</h2>
+    <div className="container">
 
-      <p>Total: {stats.total}</p>
-      <p>Completed: {stats.completed}</p>
-      <p>Pending: {stats.pending}</p>
+      <div className="stats">
+        <div className="stat-box">📊 {stats.total}</div>
+        <div className="stat-box">✅ {stats.completed}</div>
+        <div className="stat-box">⏳ {stats.pending}</div>
+      </div>
 
-      {tasks.map(task => (
-        <TaskCard key={task._id} task={task} />
-      ))}
+      <TaskForm />
+      <TaskList tasks={tasks} />
+
     </div>
   );
 }
