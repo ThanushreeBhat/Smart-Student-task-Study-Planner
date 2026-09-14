@@ -31,3 +31,4 @@ app.use("/", authRoutes);
 app.use("/", taskRoutes);
 
 app.listen(5000, () => console.log("Server running on port 5000"));
+console.log("Port 5000 is running");
